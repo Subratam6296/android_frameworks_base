@@ -375,17 +375,6 @@ public enum ScrimState {
     }
 
     public void updateScrimColor(ScrimView scrim, float alpha, int tint) {
-        if (ScrimController.DEBUG_MODE) {
-            tint = scrim == mScrimInFront ? ScrimController.DEBUG_FRONT_TINT
-                    : ScrimController.DEBUG_BEHIND_TINT;
-        }
-        Trace.traceCounter(Trace.TRACE_TAG_APP,
-                scrim == mScrimInFront ? "front_scrim_alpha" : "back_scrim_alpha",
-                (int) (alpha * 255));
-
-        Trace.traceCounter(Trace.TRACE_TAG_APP,
-                scrim == mScrimInFront ? "front_scrim_tint" : "back_scrim_tint",
-                Color.alpha(tint));
 
         scrim.setTint(tint);
         scrim.setViewAlpha(alpha);
